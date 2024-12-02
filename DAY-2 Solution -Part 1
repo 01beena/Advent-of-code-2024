@@ -1,0 +1,43 @@
+def count_safe_reports(reports):
+    def is_safe(report):
+        trend = None  # None initially, 'increasing' or 'decreasing'
+
+        for i in range(len(report) - 1):
+            diff = report[i + 1] - report[i]
+
+            # Check if the difference is out of the allowed range
+            if abs(diff) < 1 or abs(diff) > 3:
+                return False  # Report is unsafe
+
+            # Determine the trend (increasing or decreasing)
+            current_trend = 'increasing' if diff > 0 else 'decreasing'
+
+            # If the trend switches, the report is unsafe
+            if trend is None:
+                trend = current_trend  # Set initial trend
+            elif trend != current_trend:
+                return False  # Report is unsafe
+
+        return True  # Report is safe
+
+    answer = 0  # To count the safe reports
+
+    for report in reports:
+        if is_safe(report):
+            answer += 1  # Increment the count if the report is already safe
+        else:
+            # Try removing one level and check if the report becomes safe
+            for i in range(len(report)):
+                modified_report = report[:i] + report[i+1:]
+                if is_safe(modified_report):
+                    answer += 1  # Increment the count if the modified report is safe
+                    break  # No need to check further; one removal is enough
+
+    return answer
+
+# Read the reports from the input file
+with open("./input.txt") as f:
+    reports = [[int(i) for i in l.split()] for l in f]
+
+# Test the function
+print("Safe reports:", count_safe_reports(reports))
