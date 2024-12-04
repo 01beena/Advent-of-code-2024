@@ -1,0 +1,88 @@
+README for Day 3: Memory Corruption Challenge (Part 1 and 2)
+Welcome to the repository for Day 3 of the Advent of Code challenge! This project contains solutions to a corrupted memory problem where valid instructions must be extracted and processed.
+
+Problem Overview
+Part 1: Valid mul(X, Y) Instructions
+The memory contains a mix of valid and corrupted instructions. A valid instruction is in the format mul(X, Y) where:
+
+X and Y are integers between 1 and 3 digits.
+The goal is to extract these instructions, compute 
+𝑋
+×
+𝑌
+X×Y, and find the sum of all results.
+Example:
+
+text
+Copy code
+Input: xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
+Output: Total sum = 2×4 + 3×7 + 32×64 + 8×5 = 187833789
+Part 2: Handling do() and don't() Instructions
+The corrupted memory introduces two new instructions:
+
+do(): Enables future mul operations.
+don't(): Disables future mul operations.
+Only the most recent do() or don't() affects subsequent mul instructions:
+
+At the start, mul instructions are enabled by default.
+The task is to respect these conditions while summing valid mul results.
+Example:
+
+text
+Copy code
+Input: xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))
+Output: Total sum = 2×4 + 8×5 = 48
+Solution Descriptions
+Part 1: Extract and Sum Valid mul(X, Y) Instructions
+Approach:
+
+Use a regular expression to identify valid mul(X, Y) patterns.
+Extract 
+𝑋
+X and 
+𝑌
+Y, compute their products, and sum them up.
+Key Code Snippet:
+
+python
+Copy code
+pattern = r"mul\((\d{1,3}),(\d{1,3})\)"
+matches = re.findall(pattern, corrupted_memory)
+total = sum(int(x) * int(y) for x, y in matches)
+Part 2: Respect do() and don't() Instructions
+Approach:
+
+Extend Part 1 to track the state of mul instructions based on do() and don't().
+Process memory sequentially, toggling the enable/disable state and summing products only when enabled.
+Key Code Snippet:
+
+python
+Copy code
+if "don't()" in instruction:
+    enabled = False
+elif "do()" in instruction:
+    enabled = True
+elif enabled and re.match(pattern, instruction):
+    total += int(x) * int(y)
+Running the Solutions
+Prepare the Input File: Place the corrupted memory input in ./Day3/input.txt.
+
+Run Part 1:
+
+bash
+Copy code
+python part1_solution.py
+Run Part 2:
+
+bash
+Copy code
+python part2_solution.py
+Output
+Part 1: Outputs the total sum of valid mul(X, Y) results.
+Part 2: Outputs the total sum considering do() and don't() instructions.
+Example Results
+Input Example	Part 1 Output	Part 2 Output
+xmul(2,4)%&mul[3,7]!@^mul(32,64)	187833789	48
+Lessons Learned
+Efficient string parsing and validation are crucial when working with corrupted data.
+State management (e.g., enabling/disabling) is key to handling sequential conditions.
