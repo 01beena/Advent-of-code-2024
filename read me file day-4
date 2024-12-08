@@ -1,0 +1,64 @@
+Pattern Finder: MAS Detection in Grid
+This Python script identifies occurrences of the specific pattern "MAS" in a grid of characters. It checks all four 90-degree rotations of the grid to ensure no occurrences are missed.
+
+Pattern Description
+The script searches for the "MAS" pattern in a 3x3 block, structured as follows:
+
+css
+Copy code
+M   M
+  A  
+S   S
+The pattern consists of:
+
+Two 'M's in the top corners,
+'A' in the center,
+Two 'S's in the bottom corners.
+Features
+Grid Rotation: Automatically rotates the grid clockwise four times to check for patterns in all orientations.
+Flexible Input: Reads the grid from an external text file.
+Error Handling: Provides clear error messages if the input file is missing or improperly formatted.
+How to Use
+1. Input File Structure
+Create a text file (e.g., input.txt) with the grid of characters. Each line represents one row. Ensure the grid is rectangular (all rows have the same length).
+
+Example Grid:
+
+Copy code
+MMMASMMM
+MMMASMMM
+MMMASMMM
+2. Script Execution
+Save the script in a .py file, for example, find_pattern.py.
+Place the input.txt file in the same directory as the script.
+Run the script:
+bash
+Copy code
+python find_pattern.py
+Output
+The script outputs the total occurrences of the "MAS" pattern across all four rotations of the grid.
+
+Example Output:
+
+sql
+Copy code
+Total occurrences of the 'MAS' pattern across all rotations: 4
+Project Files
+find_pattern.py: The main script.
+input.txt: The file containing the grid of characters.
+Error Handling
+File Not Found: If input.txt is missing, the script prints:
+
+vbnet
+Copy code
+Error: The file at './input.txt' was not found. Please provide a valid input file.
+Unexpected Errors: For any other issue, the script prints:
+
+go
+Copy code
+An unexpected error occurred: <details of the error>
+Customization
+Update the file_path variable in the script if your input.txt file is located elsewhere.
+Adjust the grid or the pattern detection logic for similar problems involving different patterns.
+License
+This project is released under the MIT License. Feel free to use and modify it as needed.
