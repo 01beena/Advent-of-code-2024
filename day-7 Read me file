@@ -1,0 +1,74 @@
+Day 7: Bridge Repair - Code Solution
+Overview
+This Python script solves a calibration problem involving target values and sequences of numbers. The solution evaluates arithmetic expressions with different operators to match target values. The script implements two modes:
+
+Part 1: Evaluates using + (addition) and * (multiplication) operators.
+Part 2: Includes a special concatenation operator (||) alongside + and *.
+Features
+Parses input to extract targets and number sequences.
+Evaluates expressions using all combinations of operators.
+Supports concatenation (||) in Part 2 for advanced calculations.
+Outputs the total calibration result for both parts.
+Input File Format
+The input file must contain equations in the following format:
+
+php
+Copy code
+<target>: <number1> <number2> ... <numberN>
+Example:
+
+makefile
+Copy code
+42: 6 7
+100: 1 2 3 4
+<target>: The target value for the equation.
+<number1>, <number2>, ...: A sequence of numbers to evaluate.
+Requirements
+Python 3.7 or higher.
+The input file should be saved in the same directory as the script (default: input.txt).
+How to Run
+Prepare an input file (default: input.txt) with the specified format.
+
+Run the script:
+
+bash
+Copy code
+python3 bridge_repair.py
+If using a custom file, modify the file_path variable in the script or pass the file path as an argument.
+
+Outputs
+Part 1: Calculates the total of all valid target values using + and *.
+Part 2: Includes || for concatenation and recalculates the total.
+Example Output:
+
+yaml
+Copy code
+Day 7: Bridge Repair
+Part 1: 142
+Part 2: 300
+Functionality
+1. Input Parsing
+Extracts target values and number sequences from the input file.
+Example:
+makefile
+Copy code
+42: 6 7
+Result: (42, [6, 7])
+2. Expression Evaluation
+Evaluates expressions left-to-right using the given operators.
+Handles:
++ (Addition)
+* (Multiplication)
+|| (Concatenation, Mode 2 only)
+3. Total Calculation
+Checks all possible combinations of operators for each equation.
+Adds valid target values to the total.
+File Structure
+css
+Copy code
+bridge_repair.py  # Main script
+input.txt         # Input file (optional, default is "input.txt")
+Notes
+Ensure the input file follows the required format.
+Modify the script to handle additional operators or constraints if needed.
+The script uses the itertools.product function to generate operator combinations efficiently.
