@@ -1,0 +1,72 @@
+README: Antinode Finder Solutions
+This repository contains two Python solutions for identifying and counting unique antinodes based on a grid input from a file. Antinodes are computed based on the positions of antennas (letters or digits) in the grid.
+
+Problem Overview
+The task is to process a grid representing antennas and calculate unique antinodes for different frequencies. Each frequency is denoted by a unique alphanumeric character. Antinodes are derived by analyzing the relative positions of antennas for each frequency.
+
+Solution 1: Unique Antinode Finder
+Description
+This solution calculates the unique antinodes for pairs of antennas, considering valid points within the grid's bounds. It focuses on direct and minimal computation.
+
+Steps:
+Parse the Grid: Read the grid from an input file and identify the positions of antennas for each frequency.
+Compute Antinodes: For each pair of antennas of a frequency:
+Compute two potential antinodes based on the relative positions of the antennas.
+Ensure the computed antinodes are within the grid bounds.
+Return the Count: Count and return the number of unique antinodes.
+Strengths:
+Efficient for calculating antinodes for small to medium-sized grids.
+Focuses on antinodes based on direct antenna pairs.
+Solution 2: Comprehensive Antinode Finder
+Description
+This solution takes a more exhaustive approach, generating all potential antinodes along the lines formed by pairs of antennas and ensuring all points are within bounds.
+
+Steps:
+Parse the Grid: Read the grid from an input file and identify the positions of antennas for each frequency.
+Generate Antinodes: For each frequency:
+Add antenna positions as antinodes.
+Generate all possible antinodes along lines formed by each pair of antennas using a direction vector.
+Ensure generated points are valid and within the grid bounds.
+Return the Count: Count and return the number of unique antinodes.
+Strengths:
+Comprehensive; generates all potential antinodes along antenna-pair lines.
+Suitable for dense grids with closely packed antennas.
+Usage Instructions
+Input File:
+
+The input file should be a plain text file where each character represents a grid cell. Letters and digits represent antennas, and other characters are ignored.
+Running the Solutions:
+
+Place the input file in the same directory as the script or provide the full path.
+Modify the file_path variable in the script to point to the input file.
+Run the script in a Python environment.
+Output:
+
+Both solutions print the total number of unique antinodes.
+Example Input
+Copy code
+........6.b....................................
+........6................8........................
+..Y.......................................o.......
+....V...j............B.............c..............
+Example Output
+Solution 1:
+
+javascript
+Copy code
+Number of unique antinode locations: <count>
+Solution 2:
+
+javascript
+Copy code
+Number of unique antinode locations: <count>
+Comparison of Solutions
+Feature	Solution 1	Solution 2
+Efficiency	Faster for small grids	More exhaustive, slower for large grids
+Antinode Calculation	Pairwise antennas	All possible lines and pairs
+Use Case	Quick analysis	Comprehensive exploration
+Requirements
+Python 3.6+
+No external dependencies
+Author
+Developed as part of a computational grid analysis project. Contributions and improvements are welcome!
