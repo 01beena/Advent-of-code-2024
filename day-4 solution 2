@@ -1,0 +1,45 @@
+def rotate90(grid):
+    """Rotate the grid 90 degrees clockwise."""
+    return ["".join(row) for row in zip(*grid[::-1])]
+
+
+def go(grid):
+    """Count occurrences of the 'MAS' pattern in the grid."""
+    rows, cols = len(grid), len(grid[0])
+    count = 0
+    # Loop through the grid to find the pattern
+    for row in range(rows - 2):
+        for col in range(cols - 2):
+            if (
+                grid[row][col] == "M"            # Top-left 'M'
+                and grid[row][col + 2] == "M"    # Top-right 'M'
+                and grid[row + 1][col + 1] == "A"  # Center 'A'
+                and grid[row + 2][col] == "S"    # Bottom-left 'S'
+                and grid[row + 2][col + 2] == "S"  # Bottom-right 'S'
+            ):
+                count += 1
+    return count
+
+
+def main():
+    file_path = "./input.txt"  # Update this path if needed
+    try:
+        # Read grid from the input file
+        with open(file_path, "r") as file:
+            grid = [line.strip() for line in file.readlines()]
+        
+        result = 0
+        # Check the pattern in the grid and its rotations
+        for _ in range(4):
+            result += go(grid)
+            grid = rotate90(grid)
+        
+        print(f"Total occurrences of the 'MAS' pattern across all rotations: {result}")
+    except FileNotFoundError:
+        print(f"Error: The file at '{file_path}' was not found. Please provide a valid input file.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+
+if __name__ == "__main__":
+    main()
