@@ -1,0 +1,65 @@
+
+Maze Navigation Solver
+Overview
+This project is a Python-based program that solves a maze navigation problem. The maze is read from an input file, and the program computes two solutions:
+
+Part One: Calculates the number of cells visited during a traversal starting from the initial position of the navigator (^).
+Part Two: Evaluates the impact of blocking certain paths in the maze and tracks how this changes the traversal dynamics.
+Features
+Reads a maze from a text file.
+Navigates through the maze using directional rules.
+Computes unique visits in Part One.
+Tests blocked paths and tracks traversal changes in Part Two.
+Requirements
+Python 3.7 or higher.
+How to Run
+Save the maze in a file (default: input.txt) in the same directory as the program.
+
+Example Input File (input.txt):
+
+bash
+Copy code
+.....
+.^..#
+.....
+Run the script:
+
+bash
+Copy code
+python3 maze_solver.py [input.txt]
+Replace [input.txt] with the path to your maze file if different.
+
+Maze Rules
+Navigator (^): Indicates the starting point.
+Walls (#): Block navigation in that direction.
+Empty Cells (.): Can be traversed.
+Directional Logic:
+The navigator moves up, down, left, or right until hitting a wall or the maze boundary.
+After encountering a wall, the direction changes clockwise.
+Outputs
+Part One
+The program computes the number of unique cells visited during navigation.
+
+Example Output:
+
+mathematica
+Copy code
+Part 1: 12
+Part Two
+The program evaluates every possible position that could be blocked in the maze. For each test:
+
+Checks if revisiting patterns emerge during traversal.
+Increments the counter when a cycle is detected.
+Example Output:
+
+mathematica
+Copy code
+Part 2: 5
+File Structure
+css
+Copy code
+maze_solver.py  # Main program script
+input.txt       # Maze input file (optional, default is "input.txt")
+Notes
+Ensure the maze input file is rectangular (all rows of equal length).
+The maze must contain exactly one ^ symbol for the starting position.
