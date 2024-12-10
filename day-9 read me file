@@ -1,0 +1,45 @@
+Day 9: Solutions ReadMe
+Overview
+Day 9 challenges involve solving a sequence-based file arrangement problem using two different approaches. Both solutions aim to manipulate a given sequence to optimize the arrangement of files and calculate a total score based on the final positions of the files.
+
+Solution 1
+Problem Approach
+Parse the input sequence where each number represents a block length.
+Alternate between assigning blocks to files and leaving empty spaces (.).
+Rearrange the sequence to move files closer to the leftmost empty position, ensuring no unnecessary gaps remain on the right.
+Compute the total score by multiplying the index of each file block by its identifier.
+Key Features
+Simple greedy approach to optimize file arrangement.
+Efficient handling of empty positions and file shifts.
+Output
+The total score is calculated and printed.
+
+Solution 2
+Problem Approach
+Parse the sequence similarly to Solution 1.
+Track the start position and length of each file in the arrangement.
+Search for the best empty span to rearrange files closer to the left while maintaining file continuity.
+Perform file shifts iteratively, prioritizing files with higher identifiers.
+Compute the total score by multiplying the index of each file block by its identifier.
+Key Features
+Optimized search for empty spans to minimize gaps.
+Comprehensive tracking of file locations and adjustments.
+More complex logic to handle edge cases effectively.
+Output
+The total score is calculated and printed.
+
+Input Format
+A single line in the input.txt file containing a sequence of digits.
+Each digit indicates the block size, with alternating blocks representing file identifiers and empty spaces.
+How to Run
+Place your input in a file named input.txt.
+Run either of the solutions using a Python interpreter.
+Example:
+bash
+Copy code
+python solution1.py  
+or
+bash
+Copy code
+python solution2.py  
+The total score will be displayed as output.
