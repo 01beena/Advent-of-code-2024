@@ -1,0 +1,107 @@
+```markdown
+# Day 11: Plutonian Pebbles 🪨✨
+
+## Overview
+Day 11 of Advent of Code introduces the fascinating concept of **Plutonian Pebbles**, a puzzle revolving around the simulation of stone transformations. This challenge involves two parts:
+- **Part 1**: Simulating the evolution of stones over 25 blinks.
+- **Part 2**: Extending the simulation for 75 blinks, using an optimized approach to handle large datasets efficiently.
+
+---
+
+## Problem Description
+Plutonian stones possess unique properties:
+1. A stone with value `0` transforms into a single stone with value `1`.
+2. A stone with an **even number of digits** splits into two stones:
+   - Left half of its digits.
+   - Right half of its digits.
+3. A stone with an **odd number of digits** multiplies itself by `2024`.
+
+The puzzle involves simulating these transformations for a given number of "blinks" (iterations) and computing the total number of stones after the blinks.
+
+---
+
+## Solution Approach
+
+### Part 1
+- Simulates stone transformations directly, maintaining an explicit list of stone values.
+- Uses straightforward rules for splitting or transforming stones.
+- **Output**: Total number of stones after **25 blinks**.
+
+### Part 2
+- Optimized simulation using `collections.Counter` to track the frequency of stone values.
+- Reduces memory overhead by avoiding explicit stone duplication.
+- **Output**: Total number of stones after **75 blinks**.
+
+---
+
+## Implementation Details
+
+### Functions
+
+#### `simulate_blinks(stones, num_blinks)`
+Simulates the transformations for a list of stones over the given number of blinks.
+
+#### `simulate_blinks_count(stones, num_blinks)`
+Optimized version of the simulation that tracks the count of each unique stone value to handle larger datasets.
+
+---
+
+## How to Run
+
+### Prerequisites
+- Python 3.x
+
+### Input
+- A file named `input.txt` containing space-separated integers representing the initial stones.
+
+### Steps
+1. Save the code to a file, e.g., `day11_plutonian_pebbles.py`.
+2. Create an `input.txt` file in the same directory with the initial stone values.
+3. Run the script:
+   ```bash
+   python day11_plutonian_pebbles.py
+   ```
+
+---
+
+## Example Input
+
+`input.txt`
+```
+1 2024 303 0 5555
+```
+
+---
+
+## Example Outputs
+
+### Part 1
+```bash
+Number of stones after 25 blinks: [result]
+```
+
+### Part 2
+```bash
+Number of stones after 75 blinks: [result]
+```
+
+---
+
+## Key Features
+- **Dynamic Simulations**: Handles both small and large datasets effectively.
+- **Scalability**: Optimized for 75 blinks with large stone sets.
+- **Readability**: Clear implementation with easy-to-follow logic.
+
+---
+
+## Challenges and Insights
+- Efficiently handling large datasets for Part 2 required optimizing memory and computation by tracking stone counts instead of explicitly duplicating them.
+- Understanding the mathematical patterns in stone transformations helped reduce complexity.
+
+---
+
+## Lessons Learned
+This puzzle emphasized the importance of balancing **brute force approaches** with **optimized solutions** for computationally heavy problems.
+
+Happy coding! 🌟
+```
