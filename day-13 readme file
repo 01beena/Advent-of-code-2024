@@ -1,0 +1,105 @@
+# Day-13: Claw Machines Challenge - README
+
+## Introduction
+This project solves Advent of Code Day-13: Claw Machines Challenge. The challenge involves solving equations to simulate how many tokens are needed to win prizes from arcade claw machines. Each machine operates based on a unique set of rules for pressing two buttons to align the claw with the prize.
+
+The challenge is divided into two parts:
+1. **Part 1:** Solve for the minimum tokens required to win prizes with given machine configurations.
+2. **Part 2:** Adjust prize coordinates by a large offset and determine the minimum tokens required to win all possible prizes.
+
+---
+
+## Features
+1. **Custom Equation Solver:** Implements a solver to find non-negative integer solutions to linear equations derived from claw machine configurations.
+2. **Dynamic Input Parsing:** Reads machine configurations from an input file and processes multiple machines simultaneously.
+3. **Optimization:** Efficiently calculates the minimal token cost for each machine.
+4. **Offset Handling (Part 2):** Handles scenarios where prize positions are adjusted by \(10^{13}\) due to a measurement error.
+
+---
+
+## Input Format
+Input consists of multiple blocks, each describing a claw machine:
+1. **Button A Coordinates:** `X+a, Y+b`
+2. **Button B Coordinates:** `X+c, Y+d`
+3. **Prize Coordinates:** `X=p, Y=q`
+
+Example:
+```
+Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=400, Y=5400
+```
+
+For **Part 2**, add \(10^{13}\) to both `X` and `Y` prize coordinates before solving.
+
+---
+
+## How It Works
+### Part 1:
+1. Parse input to extract button and prize coordinates.
+2. Solve equations for button presses (`A` and `B`) using a brute force approach.
+3. Minimize the token cost (`3A + B`) for valid solutions.
+
+### Part 2:
+1. Add \(10^{13}\) to prize coordinates.
+2. Use a more robust solution mechanism based on determinant checks and Cramer's rule to solve equations.
+3. Check for integer, non-negative solutions to determine valid configurations.
+
+---
+
+## Functions Overview
+### Part 1
+- **`parse_input(file_path)`**: Reads input file and extracts machine data.
+- **`solve_claw_machine(button_a, button_b, prize)`**: Finds the minimum tokens required for a machine.
+
+### Part 2
+- **`extended_gcd(a, b)`**: Finds GCD and coefficients for linear combinations.
+- **`find_solution(a1, a2, b1, b2, target_x, target_y)`**: Solves two linear equations using Cramer's rule.
+- **`solve_claw_machines_part2(input_data)`**: Processes all machines and calculates total cost and prizes won.
+
+---
+
+## Running the Code
+### Part 1:
+```python
+main("input.txt")
+```
+
+### Part 2:
+```python
+# Sample Input
+input_data = """
+Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+"""
+total_tokens, possible_prizes = solve_claw_machines_part2(input_data)
+print(f"Total tokens spent: {total_tokens}")
+print(f"Total prizes won: {possible_prizes}")
+```
+
+---
+
+## Output
+### Part 1
+```
+Prizes Won: 2
+Minimum Tokens Spent: 19
+```
+
+### Part 2
+```
+Total prizes won: 2
+Total tokens spent: 100005
+```
+
+---
+
+## Notes
+- Ensure `input.txt` matches the specified format.
+- Adjust file paths and sample inputs as needed.
+- Debug logs print intermediate steps and solutions for clarity.
