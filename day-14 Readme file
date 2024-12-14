@@ -1,0 +1,37 @@
+The solutions tackle two distinct aspects of Day 14's problem, using robots with positions and velocities. Here's a concise breakdown:
+
+### **Part 1: Safety Factor**
+1. **Input Parsing**: Reads positions and velocities from the file.
+2. **Simulation**: Updates the robots' positions after `time_limit` seconds (100 seconds), accounting for grid wrapping.
+3. **Quadrant Assignment**:
+   - The grid is divided into four quadrants.
+   - Robots falling on the middle lines are excluded from any quadrant.
+4. **Safety Factor Calculation**:
+   - Counts robots in each quadrant.
+   - Computes the product of robot counts in all quadrants as the safety factor.
+
+### **Part 2: Christmas Tree Detection**
+1. **Input Parsing**: Similar to Part 1, reads the robots' data.
+2. **Simulation**:
+   - Tracks robot positions on a grid, wrapping positions to stay within bounds.
+3. **Pattern Detection**:
+   - Checks for a predefined "Christmas tree" shape in the grid using a sliding window approach.
+4. **Earliest Detection**:
+   - Simulates positions iteratively from time `0` to `max_time`.
+   - Stops when the pattern is detected, returning the time.
+
+---
+
+### **Output**
+1. **Safety Factor**: `219,512,160` after 100 seconds.
+2. **Christmas Tree Detection**: Pattern detected at `6,398` seconds.
+
+### **Optimizations & Comments**
+- **Efficiency**: 
+  - Part 2’s `is_christmas_tree` could be improved using convolution methods from libraries like `scipy` for pattern matching.
+- **Scalability**:
+  - Both parts assume the grid dimensions are manageable. Larger grids may require memory optimization.
+- **Generality**:
+  - The pattern in Part 2 is fixed, and adjustments may be needed for varying shapes.
+
+Both solutions are functional and tailored for their specific subproblems, adhering to the problem constraints effectively. Let me know if you'd like improvements or additional insights!
