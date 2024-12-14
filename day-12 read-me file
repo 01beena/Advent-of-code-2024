@@ -1,0 +1,78 @@
+# Day 12: Total Area and Perimeter Calculation
+
+This program calculates the total fencing cost for a garden represented as a grid. The input is a file where each cell contains a character representing a plant type. The cost is determined by multiplying the area of connected regions of the same plant type by their perimeter.
+
+---
+
+## How It Works
+
+1. **Input File:**
+   - The input file (`input.txt`) contains a grid of characters where each character represents a plant type.
+
+2. **Key Features:**
+   - **Area Calculation:** Uses a flood-fill algorithm to calculate the area of connected regions of the same plant type.
+   - **Perimeter Calculation:** Calculates the perimeter by checking adjacent cells for boundaries.
+   - **Orthogonal Directions:** Considers only up, down, left, and right movements for connected regions.
+
+3. **Output:**
+   - Prints the total fencing cost to the console.
+
+---
+
+## File Structure
+
+- **`input.txt`**
+  - The grid input file. Example:
+    ```
+    AAABB
+    AAABB
+    CCCDD
+    ```
+
+- **Script File**
+  - Python script containing the main logic to calculate the total area and perimeter.
+
+---
+
+## Usage
+
+1. Place your input file (`input.txt`) in the same directory as the script.
+2. Run the script:
+   ```bash
+   python day12.py
+   ```
+3. View the result printed to the console.
+
+---
+
+## Example
+
+### Input (`input.txt`):
+```
+AAABB
+AAABB
+CCCDD
+```
+
+### Output:
+```
+Total fencing cost: <calculated_value>
+```
+
+---
+
+## Dependencies
+
+- Python 3.x
+- NumPy library
+
+Install NumPy using:
+```bash
+pip install numpy
+```
+
+---
+
+## Author
+
+Inspired by the **Advent of Code** challenges to improve problem-solving skills with creative solutions.
